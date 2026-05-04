@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-blue: #1D4ED8; /* blue-700 */
+  --color-brand-red: #DC2626;  /* red-600 */
+  --color-bg-gray: #F8F9FA;
+  --color-text-main: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-gray text-text-main antialiased selection:bg-brand-blue selection:text-white;
+  }
+
+  h1, h2, h3, h4 {
+    @apply uppercase italic font-black tracking-tighter;
+  }
+}
+
+.markdown-body {
+  @apply text-slate-700 leading-relaxed font-medium;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  @apply text-slate-900 font-black uppercase italic mb-4 mt-6 tracking-tighter;
+}
+
+.markdown-body p {
+  @apply mb-4;
+}
+
+.markdown-body ul {
+  @apply list-disc pl-5 mb-4;
+}
+
+.markdown-body code {
+  @apply bg-slate-100 px-1 rounded font-mono text-sm;
+}
+
