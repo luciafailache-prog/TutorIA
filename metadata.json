@@ -1,6 +1,0 @@
-{
-  "name": "Tutor de Aprendizaje Inteligente",
-  "description": "Aplicación de tutoría personalizada para alumnos con explicaciones adaptativas, corrección de ejercicios y generación de exámenes.",
-  "requestFramePermissions": ["camera"],
-  "majorCapabilities": []
-}
