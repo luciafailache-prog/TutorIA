@@ -1,0 +1,121 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Student profile information.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "badges": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "email", "createdAt"]
+    },
+    "Topic": {
+      "title": "Topic",
+      "description": "Learning topics defined by the teacher.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "theory": { "type": "string" },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["video", "image"] },
+              "url": { "type": "string" },
+              "caption": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["id", "title"]
+    },
+    "UserProgress": {
+      "title": "UserProgress",
+      "description": "Tracking student progress on specific topics.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "topicId": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "percentage": { "type": "number" },
+        "lastAccessed": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Exercise": {
+      "title": "Exercise",
+      "description": "Assessment tasks with difficulty levels.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "topicId": { "type": "string" },
+        "content": { "type": "string" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "correctSolution": { "type": "string" }
+      }
+    },
+    "Submission": {
+      "title": "Submission",
+      "description": "Student work submissions for correction.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "topicId": { "type": "string" },
+        "exerciseId": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileName": { "type": "string" },
+        "feedback": { "type": "string" },
+        "score": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Badge": {
+      "title": "Badge",
+      "description": "Insignias earned by students.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "criteria": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Store user profiles."
+    },
+    "/topics/{topicId}": {
+      "schema": "Topic",
+      "description": "Store educational topics."
+    },
+    "/progress/{progressId}": {
+      "schema": "UserProgress",
+      "description": "Store progress entries."
+    },
+    "/exercises/{exerciseId}": {
+      "schema": "Exercise",
+      "description": "Store available exercises."
+    },
+    "/submissions/{submissionId}": {
+      "schema": "Submission",
+      "description": "Store exercise submissions."
+    },
+    "/badges/{badgeId}": {
+      "schema": "Badge",
+      "description": "Store defined badges."
+    }
+  }
+}
